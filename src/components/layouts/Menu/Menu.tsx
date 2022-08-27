@@ -22,6 +22,8 @@ import Mail from "@mui/icons-material/Mail";
 import Layers from "@mui/icons-material/Layers";
 import BarChart from "@mui/icons-material/BarChart";
 import { NavLink } from "react-router-dom";
+import { colors, Stack } from "@mui/material";
+import { red } from "@mui/material/colors";
 
 const drawerWidth = 240;
 
@@ -85,7 +87,7 @@ const MyNavLink = React.forwardRef<any, any>((props, ref) => (
     ref={ref}
     to={props.to}
     className={({ isActive }) =>
-      `${props.className} ${isActive ? props.activeClassName : ""} `
+      `${props.className} ${isActive ? props.activeClassName : ""}`
     }
   >
     {props.children}
@@ -94,7 +96,7 @@ const MyNavLink = React.forwardRef<any, any>((props, ref) => (
 
 export default function Menu({ open, onDrawerClose }: MenuProps) {
   const theme = useTheme();
-
+  // console.log(import.meta.env.BASE_URL);
   const handleDrawerClose = () => {
     onDrawerClose();
   };
@@ -116,58 +118,58 @@ export default function Menu({ open, onDrawerClose }: MenuProps) {
         open={open}
       >
         <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === "ltr" ? (
-              <ChevronLeftIcon />
-            ) : (
-              <ChevronRightIcon />
-            )}
-          </IconButton>
+          <Stack direction="row" alignItems="center">
+            <img
+              src={`${import.meta.env.BASE_URL}images/cm_logo.png`}
+              style={{ height: 30 }}
+            />
+            <IconButton onClick={handleDrawerClose}>
+              {theme.direction === "ltr" ? (
+                <ChevronLeftIcon />
+              ) : (
+                <ChevronRightIcon />
+              )}
+            </IconButton>
+          </Stack>
         </DrawerHeader>
         <Divider />
         <List>
-          <ListItem
+          <ListItemButton
             disablePadding
             component={MyNavLink}
             to="/stock"
             activeClassName="Mui-selected"
             exact
           >
-            <ListItemButton>
-              <ListItemIcon>
-                <Layers />
-              </ListItemIcon>
-              <ListItemText primary={"Stock"} />
-            </ListItemButton>
-          </ListItem>
+            <ListItemIcon>
+              <Layers />
+            </ListItemIcon>
+            <ListItemText primary={"Stock"} />
+          </ListItemButton>
 
-          <ListItem
+          <ListItemButton
             disablePadding
             component={MyNavLink}
             to="/report"
             activeClassName="Mui-selected"
           >
-            <ListItemButton>
-              <ListItemIcon>
-                <Mail />
-              </ListItemIcon>
-              <ListItemText primary={"Report"} />
-            </ListItemButton>
-          </ListItem>
+            <ListItemIcon>
+              <Mail />
+            </ListItemIcon>
+            <ListItemText primary={"Report"} />
+          </ListItemButton>
 
-          <ListItem
+          <ListItemButton
             disablePadding
             component={MyNavLink}
             to="/aboutus"
             activeClassName="Mui-selected"
           >
-            <ListItemButton>
-              <ListItemIcon>
-                <BarChart />
-              </ListItemIcon>
-              <ListItemText primary={"Aboutus"} />
-            </ListItemButton>
-          </ListItem>
+            <ListItemIcon>
+              <BarChart />
+            </ListItemIcon>
+            <ListItemText primary={"Aboutus"} />
+          </ListItemButton>
         </List>
         <Divider />
         <List>

@@ -27,6 +27,34 @@ Unit
 
 - 1point = 8px
 
+Link
+
+```
+const MyNavLink = React.forwardRef<any, any>((props, ref) => (
+  <NavLink
+    ref={ref}
+    to={props.to}
+    className={({ isActive }) =>
+      `${props.className} ${isActive ? props.activeClassName : ""}`
+    }
+  >
+    {props.children}
+  </NavLink>
+));
+
+```
+
+```
+<ListItemButton
+            disablePadding
+            component={MyNavLink}
+            to="/stock"
+            activeClassName="Mui-selected"
+            exact
+          >
+          </ListItemButton>
+```
+
 # Dependencies :
 
 - @emotion/react 11.10.0

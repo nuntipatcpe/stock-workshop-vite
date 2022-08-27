@@ -7,6 +7,7 @@ specifiers:
   '@mui/material': ^5.10.1
   '@mui/x-data-grid': ^5.15.3
   '@react-hook/debounce': ^4.0.0
+  '@types/node': ^18.7.11
   '@types/react': ^18.0.17
   '@types/react-dom': ^18.0.6
   '@types/react-router-dom': ^5.3.3
@@ -41,6 +42,7 @@ dependencies:
   '@mui/material': 5.10.1_sqzxty2p7kxc2tmue4tecplwku
   '@mui/x-data-grid': 5.15.3_i6jlymzju5qwfqjnvxn2niybc4
   '@react-hook/debounce': 4.0.0_react@18.2.0
+  '@types/node': 18.7.11
   '@types/react-router-dom': 5.3.3
   '@types/redux-logger': 3.0.9
   '@types/url-join': 4.0.1
@@ -734,6 +736,10 @@ packages:
     dependencies:
       '@types/react': 18.0.17
       hoist-non-react-statics: 3.3.2
+    dev: false
+
+  /@types/node/18.7.11:
+    resolution: {integrity: sha512-KZhFpSLlmK/sdocfSAjqPETTMd0ug6HIMIAwkwUpU79olnZdQtMxpQP+G1wDzCH7na+FltSIhbaZuKdwZ8RDrw==}
     dev: false
 
   /@types/parse-json/4.0.0:

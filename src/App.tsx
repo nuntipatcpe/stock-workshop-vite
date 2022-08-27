@@ -1,5 +1,10 @@
 import * as React from "react";
-import { styled, useTheme } from "@mui/material/styles";
+import {
+  createTheme,
+  styled,
+  ThemeProvider,
+  useTheme,
+} from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -28,6 +33,15 @@ import StockCreatePage from "./components/pages/StockCreatePage";
 import StockEditPage from "./components/pages/StockEditPage";
 import ReportPage from "./components/pages/ReportPage";
 import AboutUs from "./components/pages/AboutUs";
+import { blueGrey } from "@mui/material/colors";
+import { useSelector } from "react-redux";
+import { RootReducers } from "./reducers";
+
+import * as loginAction from "./actions/login.action";
+import { useAppDispatch } from "./main";
+import { Public } from "@mui/icons-material";
+import PublicRoutes from "./router/public.routes";
+import ProtectedRoutes from "./router/protected.routes";
 
 const drawerWidth = 240;
 
@@ -49,6 +63,34 @@ const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })<{
     marginLeft: 0,
   }),
 }));
+
+const theme = createTheme({
+  components: {
+    MuiDrawer: {
+      styleOverrides: {
+        paper: {
+          backgroundImage: `url(${
+            import.meta.env.BASE_URL
+          }images/background_menu.jpg)`,
+          width: drawerWidth,
+        },
+      },
+    },
+  },
+  typography: {
+    fontFamily: "Montserrat, sans-serif",
+    fontWeightLight: 500,
+    fontWeightRegular: 600,
+    fontWeightMedium: 700,
+    fontWeightBold: 800,
+  },
+  palette: {
+    primary: blueGrey,
+    background: {
+      default: "#CFD2D6",
+    },
+  },
+});
 
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
@@ -81,9 +123,10 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 export default function App() {
-  const theme = useTheme();
+  // const theme = useTheme();
   const [open, setOpen] = React.useState(true);
-
+  const dispatch = useAppDispatch();
+  const loginReducer = useSelector((state: RootReducers) => state.loginReducer);
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -92,26 +135,46 @@ export default function App() {
     setOpen(false);
   };
 
+  React.useEffect(() => {
+    dispatch(loginAction.restoreLogin());
+  }, []);
+
   return (
-    <Box sx={{ display: "flex" }}>
-      <CssBaseline />
-      <Header open={open} onDrawerOpen={handleDrawerOpen} />
-      <Menu open={open} onDrawerClose={handleDrawerClose} />
-      <Main open={open}>
-        <DrawerHeader />
-        <Routes>
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/stock" element={<StockPage />} />
-          <Route path="/stock/create" element={<StockCreatePage />} />
-          <Route path="/stock/edit/:id" element={<StockEditPage />} />
-          <Route path="/report" element={<ReportPage />} />
-          <Route path="/aboutus" element={<AboutUs />} />
-          <Route path="/" element={<Navigate to="/login" />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Main>
-    </Box>
+    <ThemeProvider theme={theme}>
+      <Box sx={{ display: "flex" }}>
+        <CssBaseline />
+        {loginReducer.result && (
+          <Header open={open} onDrawerOpen={handleDrawerOpen} />
+        )}
+        {loginReducer.result && (
+          <Menu open={open} onDrawerClose={handleDrawerClose} />
+        )}
+        {/* <Header open={open} onDrawerOpen={handleDrawerOpen} />
+        <Menu open={open} onDrawerClose={handleDrawerClose} /> */}
+
+        <Main open={open}>
+          <DrawerHeader />
+          <Routes>
+            {/* Public routes */}
+            <Route path="/" element={<PublicRoutes />}>
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/register" element={<RegisterPage />} />
+            </Route>
+
+            {/* Protected routes */}
+            <Route path="/" element={<ProtectedRoutes />}>
+              <Route path="/stock" element={<StockPage />} />
+              <Route path="/stock/create" element={<StockCreatePage />} />
+              <Route path="/stock/edit/:id" element={<StockEditPage />} />
+              <Route path="/report" element={<ReportPage />} />
+              <Route path="/aboutus" element={<AboutUs />} />
+              <Route path="/" element={<Navigate to="/login" />} />
+              <Route path="*" element={<NotFound />} />
+            </Route>
+          </Routes>
+        </Main>
+      </Box>
+    </ThemeProvider>
   );
 }
 
