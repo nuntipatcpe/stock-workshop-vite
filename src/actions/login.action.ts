@@ -11,7 +11,7 @@ import {
 } from "../Constants";
 import { LoginResult } from "../types/authen.type";
 import { User } from "../types/user.type";
-import { httpClient } from "../utils/httpClient";
+import httpClient from "../utils/httpClient";
 // rxaction createtor
 export const setLoginFetchingToState = () => ({
   type: LOGIN_FETCHING,
@@ -34,8 +34,9 @@ export const login = (user: User, navigate: NavigateFunction) => {
     try {
       //begin connecting...
       dispath(setLoginFetchingToState());
+
       const result = await httpClient.post<LoginResult>(server.LOGIN_URL, user);
-      console.log("user", result.data.result);
+      // console.log("user", result.data.result);
       if (result.data.result === OK) {
         localStorage.setItem(TOKEN, result.data.token!);
         dispath(setRegisterSuccessToState(result.data));

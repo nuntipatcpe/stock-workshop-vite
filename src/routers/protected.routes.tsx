@@ -3,7 +3,7 @@ import { store } from "../main";
 
 const ProtectedRoutes = (props: any) => {
   const auth = store.getState().loginReducer.result;
-  console.log("ProtectedRoutes");
+  console.log("Protected Routes");
   return auth ? <Outlet /> : <Navigate to="/login" />;
 };
 

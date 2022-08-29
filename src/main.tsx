@@ -14,7 +14,7 @@ import logger from "redux-logger";
 
 let middleware: Middleware[] = [thunk];
 if (true) {
-  middleware.push(logger);
+  // middleware.push(logger);
 }
 // export let navigate = useNavigate();
 export const store = createStore(reducers, applyMiddleware(...middleware));

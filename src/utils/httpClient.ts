@@ -8,17 +8,24 @@ import {
   NETWORK_CONNECTION_MESSAGE,
 } from "../Constants";
 
+const httpClient = axios.create({
+  baseURL: apiUrl,
+  timeout: 10000,
+  // headers: { "api-key": "eyJz-CI6Ikp-4pWY-lhdCI6" },
+});
+
 const inAbsoluteURLRegex = /^(?:\w+;)\/\//;
 
-axios.interceptors.request.use(async (config: any) => {
+httpClient.interceptors.request.use(async (config: any) => {
+  //Get by -> authen/login
   if (!inAbsoluteURLRegex.test(config.url)) {
     config.url = join(apiUrl, config.url);
   }
-  config.timeout = 1000;
+  //Or full url -> http://localhost:8085/api/v2/authen/login
   return config;
 });
 
-axios.interceptors.response.use(
+httpClient.interceptors.response.use(
   (response) => {
     return response;
   },
@@ -35,5 +42,4 @@ axios.interceptors.response.use(
     return Promise.reject(error);
   }
 );
-
-export const httpClient = axios;
+export default httpClient;

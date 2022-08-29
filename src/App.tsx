@@ -40,8 +40,8 @@ import { RootReducers } from "./reducers";
 import * as loginAction from "./actions/login.action";
 import { useAppDispatch } from "./main";
 import { Public } from "@mui/icons-material";
-import PublicRoutes from "./routers/Public.routes";
-import ProtectedRoutes from "./routers/Protected.routes";
+import PublicRoutes from "./routers/public.routes";
+import ProtectedRoutes from "./routers/protected.routes";
 
 const drawerWidth = 240;
 

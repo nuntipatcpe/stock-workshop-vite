@@ -8,7 +8,7 @@ import {
   server,
 } from "../Constants";
 import { User } from "../types/user.type";
-import { httpClient } from "../utils/httpClient";
+import httpClient from "../utils/httpClient";
 // rxaction
 export const setReisterFetchingToState = () => ({
   type: REGISTER_FETCHING,

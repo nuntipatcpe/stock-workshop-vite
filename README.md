@@ -103,3 +103,105 @@ pnpm i @emotion/react @emotion/styled @mui/icons-material @mui/material @mui/x-d
   ```
   npx crcf -f --notest --typescript Header Menu
   ```
+
+# Axios
+
+- Custom axios interceptors [Ref.](https://blog.clairvoyantsoft.com/intercepting-requests-responses-using-axios-df498b6cab62)
+
+  Axios create
+
+  ```
+  const customAxios = axios.create({
+    baseURL: `https://example.com/api`,
+    timeout: 10000,
+    headers: { 'api-key': 'eyJz-CI6Ikp-4pWY-lhdCI6' }
+  });
+  ```
+
+  Request
+
+  ```
+  customAxios.interceptors.request.use(async (config: any) => {
+    return config;
+  });
+  ```
+
+  Response
+
+  ```
+  customAxios.interceptors.response.use(
+    (response) => {
+      return response;
+    },
+    (error) => {
+      console.log(JSON.stringify(error, undefined, 2));
+      if (axios.isCancel(error)) {
+        return Promise.reject(error);
+      } else if (!error.response) {
+        return Promise.reject({
+          code: "NOT_CONNECT_NETWORK",
+          message: "Cannot connect to server, Please try again.",
+        });
+      }
+      return Promise.reject(error);
+    }
+  );
+
+  ```
+
+  ```
+  export default httpClient;
+  ```
+
+- Axios interceptors
+
+  Request
+
+  ```
+  axios.interceptors.request.use(async (config: any) => {
+    return config;
+  });
+  ```
+
+  Response
+
+  ```
+  axios.interceptors.response.use(
+    (response) => {
+      return response;
+    },
+    (error) => {
+      console.log(JSON.stringify(error, undefined, 2));
+      if (axios.isCancel(error)) {
+        return Promise.reject(error);
+      } else if (!error.response) {
+        return Promise.reject({
+          code: "NOT_CONNECT_NETWORK",
+          message: "Cannot connect to server, Please try again.",
+        });
+      }
+      return Promise.reject(error);
+    }
+  );
+  ```
+
+  ```
+  export const httpClient = axios;
+  ```
+
+  regex = /^(?:\w+;)\/\//; return boolean
+
+  regex.test(config.url);
+
+  ```
+  const inAbsoluteURLRegex = /^(?:\w+;)\/\//;
+
+  httpClient.interceptors.request.use(async (config: any) => {
+  //Get by -> authen/login
+  if (!inAbsoluteURLRegex.test(config.url)) {
+    config.url = join(apiUrl, config.url);
+  }
+  //Or full url -> http://localhost:8085/api/v2/authen/login
+  return config;
+  });
+  ```
