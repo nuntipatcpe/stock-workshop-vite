@@ -1,5 +1,4 @@
 import * as React from "react";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Formik, FormikProps } from "formik";
 import {
@@ -16,10 +15,8 @@ import {
 } from "@mui/material";
 import { User } from "../../../types/user.type";
 
-import { httpClient } from "../../../utils/httpClient";
-import { server } from "../../../Constants";
 import * as registerActions from "../../../actions/register.action";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { RootReducers } from "../../../reducers";
 import { useAppDispatch } from "../../../main";
 
@@ -59,8 +56,6 @@ const RegisterPage: React.FC<any> = () => {
           onChange={handleChange}
           value={values.password}
         />
-
-        {/* <span>Debug: {JSON.stringify(account)}</span> */}
         <br />
         <button type="submit" disabled={isSubmitting}>
           Submit
@@ -140,19 +135,7 @@ const RegisterPage: React.FC<any> = () => {
             </Typography>
             <Formik
               onSubmit={async (values, { setSubmitting }) => {
-                // const result = await axios.post(
-                //   "http://localhost:8085/api/v2/authen/register",
-                //   values
-                // );
-                // const result = await httpClient.post(
-                //   server.REGISTER_URL,
-                //   values
-                // );
                 dispatch(registerActions.register(values, navigate));
-                // alert(JSON.stringify(result.data));
-                // setTimeout(() => {
-                //   setSubmitting(false);
-                // }, 1000);
               }}
               initialValues={initialValues}
             >

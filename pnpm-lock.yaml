@@ -20,6 +20,7 @@ specifiers:
   formik: ^2.2.9
   formik-material-ui: 4.0.0-alpha.2
   moment: ^2.29.4
+  moment-timezone: ^0.5.37
   react: ^18.2.0
   react-chartjs-2: ^4.3.1
   react-dom: ^18.2.0
@@ -51,6 +52,7 @@ dependencies:
   formik: 2.2.9_react@18.2.0
   formik-material-ui: 4.0.0-alpha.2_pg737zt3zcpdiqdfruqec7a3v4
   moment: 2.29.4
+  moment-timezone: 0.5.37
   react: 18.2.0
   react-chartjs-2: 4.3.1_2unjvz6v6rskedwoxtmbfw2rje
   react-dom: 18.2.0_react@18.2.0
@@ -1526,6 +1528,12 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
     dev: true
+
+  /moment-timezone/0.5.37:
+    resolution: {integrity: sha512-uEDzDNFhfaywRl+vwXxffjjq1q0Vzr+fcQpQ1bU0kbzorfS7zVtZnCnGc8mhWmF39d4g4YriF6kwA75mJKE/Zg==}
+    dependencies:
+      moment: 2.29.4
+    dev: false
 
   /moment/2.29.4:
     resolution: {integrity: sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==}

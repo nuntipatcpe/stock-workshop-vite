@@ -205,3 +205,64 @@ pnpm i @emotion/react @emotion/styled @mui/icons-material @mui/material @mui/x-d
   return config;
   });
   ```
+
+Moment
+
+vite.config.ts
+
+```
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [react()],
+  resolve: {
+    mainFields: [],
+  },
+});
+
+```
+
+# Routes
+
+- useNavigate
+
+  ```
+  import { useNavigate } from "react-router-dom";
+  ```
+
+  ```
+  const navigate = useNavigate();
+  ```
+
+  ```
+  navigate(-1)
+  ```
+
+  ```
+  navigate("/register")
+  ```
+
+- useMatch **check URL /:id**
+
+  ```
+  import { useMatch } from "react-router-dom";
+  ```
+
+  :id
+
+  ```
+  const match = useMatch("/stock/edit/:id");
+  ```
+
+  id
+
+  ```
+  match.params.id
+  ```
+
+- history
+  ```
+  history.back();
+  ```

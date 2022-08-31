@@ -11,7 +11,6 @@ import {
 const httpClient = axios.create({
   baseURL: apiUrl,
   timeout: 10000,
-  // headers: { "api-key": "eyJz-CI6Ikp-4pWY-lhdCI6" },
 });
 
 const inAbsoluteURLRegex = /^(?:\w+;)\/\//;

@@ -1,28 +1,10 @@
 import * as React from "react";
-import {
-  createTheme,
-  styled,
-  ThemeProvider,
-  useTheme,
-} from "@mui/material/styles";
+import { createTheme, styled, ThemeProvider } from "@mui/material/styles";
 import Box from "@mui/material/Box";
-import Drawer from "@mui/material/Drawer";
+
 import CssBaseline from "@mui/material/CssBaseline";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import List from "@mui/material/List";
-import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
+
 import Header from "./components/layouts/Header";
 import Menu from "./components/layouts/Menu";
 import { Link, Navigate, Route, Routes } from "react-router-dom";
@@ -33,13 +15,12 @@ import StockCreatePage from "./components/pages/StockCreatePage";
 import StockEditPage from "./components/pages/StockEditPage";
 import ReportPage from "./components/pages/ReportPage";
 import AboutUs from "./components/pages/AboutUs";
-import { blueGrey } from "@mui/material/colors";
+import { blue, blueGrey } from "@mui/material/colors";
 import { useSelector } from "react-redux";
 import { RootReducers } from "./reducers";
 
 import * as loginAction from "./actions/login.action";
 import { useAppDispatch } from "./main";
-import { Public } from "@mui/icons-material";
 import PublicRoutes from "./routers/public.routes";
 import ProtectedRoutes from "./routers/protected.routes";
 
@@ -67,14 +48,7 @@ const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })<{
 const theme = createTheme({
   components: {
     MuiDrawer: {
-      styleOverrides: {
-        paper: {
-          backgroundImage: `url(${
-            import.meta.env.BASE_URL
-          }images/background_menu.jpg)`,
-          width: drawerWidth,
-        },
-      },
+      styleOverrides: {},
     },
   },
   typography: {
@@ -85,7 +59,7 @@ const theme = createTheme({
     fontWeightBold: 800,
   },
   palette: {
-    primary: blueGrey,
+    primary: import.meta.env.VITE_IS_PRODUCTION == "1" ? blue : blueGrey,
     background: {
       default: "#CFD2D6",
     },

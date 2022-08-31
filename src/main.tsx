@@ -1,4 +1,3 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
@@ -11,12 +10,12 @@ import thunk from "redux-thunk";
 import { Provider, useDispatch } from "react-redux";
 import reducers from "./reducers";
 import logger from "redux-logger";
-
 let middleware: Middleware[] = [thunk];
-if (true) {
-  // middleware.push(logger);
+
+if (import.meta.env.VITE_IS_PRODUCTION === "0") {
+  console.log(import.meta.env.VITE_IS_PRODUCTION);
+  middleware.push(logger);
 }
-// export let navigate = useNavigate();
 export const store = createStore(reducers, applyMiddleware(...middleware));
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <BrowserRouter>

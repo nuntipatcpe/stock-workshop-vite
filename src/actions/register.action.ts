@@ -33,7 +33,8 @@ export const register = (user: User, navigate: NavigateFunction) => {
       if (result.data.result === OK) {
         dispath(setRegisterSuccessToState(result.data));
         alert("Register success");
-        navigate("/login");
+        // navigate("/login");
+        history.back();
       } else {
         dispath(setRegisterFailedToState());
       }

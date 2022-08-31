@@ -27,7 +27,6 @@ export default (state = initialState, { type, payload }: any): LoginState => {
     case LOGIN_FAILED:
       return { ...state, isFetching: false, isError: true, result: null };
     case LOGOUT:
-      console.log("Logout");
       return initialState;
     default:
       return state;
