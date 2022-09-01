@@ -1,4 +1,3 @@
-import * as React from "react";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
@@ -10,14 +9,8 @@ import IconButton from "@mui/material/IconButton";
 
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import Mail from "@mui/icons-material/Mail";
-import Layers from "@mui/icons-material/Layers";
-import BarChart from "@mui/icons-material/BarChart";
-import { NavLink } from "react-router-dom";
 import { Stack } from "@mui/material";
+import ListItem from "./components/List.menu.component";
 
 const drawerWidth = 240;
 
@@ -35,22 +28,8 @@ type MenuProps = {
   onDrawerClose: () => void;
 };
 
-//customLink
-const MyNavLink = React.forwardRef<any, any>((props, ref) => (
-  <NavLink
-    ref={ref}
-    to={props.to}
-    className={({ isActive }) =>
-      `${props.className} ${isActive ? props.activeClassName : ""}`
-    }
-  >
-    {props.children}
-  </NavLink>
-));
-
 export default function Menu({ open, onDrawerClose }: MenuProps) {
   const theme = useTheme();
-  // console.log(import.meta.env.BASE_URL);
   const handleDrawerClose = () => {
     onDrawerClose();
   };
@@ -95,42 +74,9 @@ export default function Menu({ open, onDrawerClose }: MenuProps) {
         </DrawerHeader>
         <Divider />
         <List>
-          <ListItemButton
-            disablePadding
-            component={MyNavLink}
-            to="/stock"
-            activeClassName="Mui-selected"
-            exact
-          >
-            <ListItemIcon>
-              <Layers />
-            </ListItemIcon>
-            <ListItemText primary={"Stock"} />
-          </ListItemButton>
-
-          <ListItemButton
-            disablePadding
-            component={MyNavLink}
-            to="/report"
-            activeClassName="Mui-selected"
-          >
-            <ListItemIcon>
-              <Mail />
-            </ListItemIcon>
-            <ListItemText primary={"Report"} />
-          </ListItemButton>
-
-          <ListItemButton
-            disablePadding
-            component={MyNavLink}
-            to="/aboutus"
-            activeClassName="Mui-selected"
-          >
-            <ListItemIcon>
-              <BarChart />
-            </ListItemIcon>
-            <ListItemText primary={"Aboutus"} />
-          </ListItemButton>
+          <ListItem name="Stocks" path={"/stock"} icons={"Layers"} />
+          <ListItem name="Report" path={"/report"} icons={"Mail"} />
+          <ListItem name="Aboutus" path={"/aboutus"} icons={"BarChart"} />
         </List>
         <Divider />
       </Drawer>
