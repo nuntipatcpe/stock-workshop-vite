@@ -27,7 +27,7 @@ const Icon = (name: string) => {
   if (name === "BarChart") return <BarChart />;
 };
 
-export default function ListItem({ name, path, icons }: Props) {
+export default function ListMenuComponent({ name, path, icons }: Props) {
   return (
     <ListItemButton
       disablePadding

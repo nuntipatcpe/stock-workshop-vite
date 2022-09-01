@@ -5,8 +5,8 @@ import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 
 import { createStore, applyMiddleware, Middleware } from "redux";
-
 import thunk from "redux-thunk";
+
 import { Provider, useDispatch } from "react-redux";
 import reducers from "./reducers";
 import logger from "redux-logger";
@@ -17,6 +17,7 @@ if (import.meta.env.VITE_IS_PRODUCTION === "0") {
   middleware.push(logger);
 }
 export const store = createStore(reducers, applyMiddleware(...middleware));
+
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <BrowserRouter>
     <Provider store={store}>
@@ -26,4 +27,4 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
 );
 
 export type AppDispatch = typeof store.dispatch;
-export const useAppDispatch = () => useDispatch<any>();
+export const useAppDispatch = () => useDispatch<AppDispatch>();
