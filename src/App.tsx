@@ -17,10 +17,10 @@ import ReportPage from "./components/pages/ReportPage";
 import AboutUs from "./components/pages/AboutUs";
 import { blue, blueGrey } from "@mui/material/colors";
 import { useSelector } from "react-redux";
-import { RootReducers } from "./reducers";
+import { RootReducers } from "./Redux/reducers";
 
-import * as loginAction from "./actions/login.action";
-import { useAppDispatch } from "./main";
+import * as loginAction from "./Redux/actions/login.action";
+import { useAppDispatch } from "./Redux/reducers";
 import PublicRoutes from "./routers/public.routes";
 import ProtectedRoutes from "./routers/protected.routes";
 

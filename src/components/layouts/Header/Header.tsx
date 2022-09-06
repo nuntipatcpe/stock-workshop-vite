@@ -13,8 +13,8 @@ import Notifications from "@mui/icons-material/Notifications";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import { useNavigate } from "react-router-dom";
 
-import * as loginAction from "../../../actions/login.action";
-import { useAppDispatch } from "../../../main";
+import * as loginAction from "../../../Redux/actions/login.action";
+import { useAppDispatch } from "../../../Redux/reducers";
 
 const drawerWidth = 240;
 

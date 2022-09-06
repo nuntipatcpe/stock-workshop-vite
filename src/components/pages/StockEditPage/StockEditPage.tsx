@@ -11,11 +11,11 @@ import { TextField } from "formik-material-ui";
 import * as React from "react";
 import { useSelector } from "react-redux";
 import { Link, useMatch } from "react-router-dom";
-import { useAppDispatch } from "../../../main";
+import { useAppDispatch } from "../../../Redux/reducers";
 import { imageUrl } from "../../../Constants";
-import { RootReducers } from "../../../reducers";
+import { RootReducers } from "../../../Redux/reducers";
 import { Product } from "../../../types/product.type";
-import * as stockEditActions from "./../../../actions/stock.edit.action";
+import * as stockEditActions from "../../../Redux/actions/stock.edit.action";
 
 type StockEditPageProps = {
   //

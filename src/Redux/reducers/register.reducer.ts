@@ -4,7 +4,7 @@ import {
   REGISTER_FAILED,
   REGISTER_FETCHING,
   REGISTER_SUCCESS,
-} from "../Constants";
+} from "../../Constants";
 
 export interface RegisterState {
   isFetching: boolean;

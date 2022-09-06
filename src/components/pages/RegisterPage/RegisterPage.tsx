@@ -15,10 +15,10 @@ import {
 } from "@mui/material";
 import { User } from "../../../types/user.type";
 
-import * as registerActions from "../../../actions/register.action";
+import * as registerActions from "../../../Redux/actions/register.action";
 import { useSelector } from "react-redux";
-import { RootReducers } from "../../../reducers";
-import { useAppDispatch } from "../../../main";
+import { RootReducers } from "../../../Redux/reducers";
+import { useAppDispatch } from "../../../Redux/reducers";
 
 type RegisterPageProps = {
   //

@@ -8,10 +8,10 @@ import {
   server,
   TOKEN,
   LOGOUT,
-} from "../Constants";
-import { LoginResult } from "../types/authen.type";
-import { User } from "../types/user.type";
-import httpClient from "../utils/httpClient";
+} from "../../Constants";
+import { LoginResult } from "../../types/authen.type";
+import { User } from "../../types/user.type";
+import httpClient from "../../utils/httpClient";
 // rxaction createtor
 export const setLoginFetchingToState = () => ({
   type: LOGIN_FETCHING,

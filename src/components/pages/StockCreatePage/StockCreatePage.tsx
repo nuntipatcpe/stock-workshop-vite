@@ -10,9 +10,9 @@ import { FormikProps, Form, Field, Formik } from "formik";
 import { TextField } from "formik-material-ui";
 import * as React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../../../main";
+import { useAppDispatch } from "../../../Redux/reducers";
 import { Product } from "../../../types/product.type";
-import * as stockActions from "./../../../actions/stock.action";
+import * as stockActions from "../../../Redux/actions/stock.action";
 
 type StockCreatePageProps = {
   //

@@ -1,5 +1,5 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { store } from "../main";
+import { store } from "../Redux/reducers";
 
 const PublicRoutes = (props: any) => {
   const auth = store.getState().loginReducer.result;

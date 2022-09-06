@@ -3,8 +3,8 @@ import {
   STOCK_FAILED,
   STOCK_FETCHING,
   STOCK_SUCCESS,
-} from "../Constants";
-import { Product } from "../types/product.type";
+} from "../../Constants";
+import { Product } from "../../types/product.type";
 
 export interface StockState {
   result: Product[];

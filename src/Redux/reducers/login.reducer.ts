@@ -5,7 +5,7 @@ import {
   LOGIN_FETCHING,
   LOGIN_SUCCESS,
   LOGOUT,
-} from "../Constants";
+} from "../../Constants";
 
 export interface LoginState {
   isFetching: boolean;

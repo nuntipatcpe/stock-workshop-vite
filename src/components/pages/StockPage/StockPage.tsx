@@ -2,10 +2,10 @@ import * as React from "react";
 import { DataGrid, GridColDef, GridRenderCellParams } from "@mui/x-data-grid";
 import { useEffect } from "react";
 import { imageUrl } from "../../../Constants";
-import * as stockActions from "../../../actions/stock.action";
+import * as stockActions from "../../../Redux/actions/stock.action";
 import { useSelector } from "react-redux";
-import { RootReducers } from "../../../reducers";
-import { useAppDispatch } from "../../../main";
+import { RootReducers } from "../../../Redux/reducers";
+import { useAppDispatch } from "../../../Redux/reducers";
 import {
   Typography,
   Stack,

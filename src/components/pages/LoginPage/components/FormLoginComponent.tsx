@@ -2,10 +2,10 @@ import { Alert, Button, Stack, TextField } from "@mui/material";
 import { Formik, FormikProps } from "formik";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../../../../main";
-import { RootReducers } from "../../../../reducers";
+import { useAppDispatch } from "../../../../Redux/reducers";
+import { RootReducers } from "../../../../Redux/reducers";
 import { User } from "../../../../types/user.type";
-import * as loginAction from "../../../../actions/login.action";
+import * as loginAction from "../../../../Redux/actions/login.action";
 type Props = {};
 
 export default function FormLoginComponent({}: Props) {

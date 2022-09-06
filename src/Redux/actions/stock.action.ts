@@ -4,9 +4,9 @@ import {
   STOCK_FAILED,
   STOCK_FETCHING,
   STOCK_SUCCESS,
-} from "../Constants";
-import { Product } from "../types/product.type";
-import httpClient from "../utils/httpClient";
+} from "../../Constants";
+import { Product } from "../../types/product.type";
+import httpClient from "../../utils/httpClient";
 
 export const setStockFetchingToState = () => ({
   type: STOCK_FETCHING,

@@ -2,8 +2,8 @@ import {
   STOCK_EDIT_FAILED,
   STOCK_EDIT_FETCHING,
   STOCK_EDIT_SUCCESS,
-} from "../Constants";
-import { Product } from "../types/product.type";
+} from "../../Constants";
+import { Product } from "../../types/product.type";
 
 export interface StockEditState {
   result: Product | null;

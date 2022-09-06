@@ -6,9 +6,9 @@ import {
   REGISTER_FETCHING,
   REGISTER_SUCCESS,
   server,
-} from "../Constants";
-import { User } from "../types/user.type";
-import httpClient from "../utils/httpClient";
+} from "../../Constants";
+import { User } from "../../types/user.type";
+import httpClient from "../../utils/httpClient";
 // rxaction
 export const setReisterFetchingToState = () => ({
   type: REGISTER_FETCHING,
