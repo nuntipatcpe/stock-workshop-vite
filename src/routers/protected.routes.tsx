@@ -4,7 +4,7 @@ import { store } from "../Redux/reducers";
 
 const ProtectedRoutes = (props: any) => {
   const auth = store.getState().loginReducer.result;
-  console.log("Protected Routes");
+  // console.log("Protected Routes");
   return auth ? <Outlet /> : <Navigate to="/login" />;
 };
 

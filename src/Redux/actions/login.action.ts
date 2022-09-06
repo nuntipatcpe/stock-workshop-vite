@@ -17,11 +17,11 @@ export const setLoginFetchingToState = () => ({
   type: LOGIN_FETCHING,
 });
 
-export const setRegisterSuccessToState = (payload: LoginResult) => ({
+export const setLoginSuccessToState = (payload: LoginResult) => ({
   type: LOGIN_SUCCESS,
   payload,
 });
-export const setRegisterFailedToState = () => ({
+export const setLoginFailedToState = () => ({
   type: LOGIN_FAILED,
 });
 export const setLogoutToState = () => ({
@@ -35,19 +35,20 @@ export const login = (user: User, navigate: NavigateFunction) => {
       //begin connecting...
       dispath(setLoginFetchingToState());
 
+      console.log("user", user);
       const result = await httpClient.post<LoginResult>(server.LOGIN_URL, user);
       // console.log("user", result.data.result);
       if (result.data.result === OK) {
         localStorage.setItem(TOKEN, result.data.token!);
-        dispath(setRegisterSuccessToState(result.data));
+        dispath(setLoginSuccessToState(result.data));
         alert("Login successfully");
         navigate("/stock");
       } else {
-        dispath(setRegisterFailedToState());
+        dispath(setLoginFailedToState());
       }
       //connecting...
     } catch (err) {
-      dispath(setRegisterFailedToState());
+      dispath(setLoginFailedToState());
     }
   };
 };
@@ -57,7 +58,7 @@ export const restoreLogin = () => {
     const token = localStorage.getItem(TOKEN);
     if (token) {
       dispatch(
-        setRegisterSuccessToState({
+        setLoginSuccessToState({
           result: OK,
           token,
           message: "Login successfully",

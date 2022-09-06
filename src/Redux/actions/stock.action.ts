@@ -75,11 +75,3 @@ export const deleteProduct = (id: string) => {
     await doGetProducts(dispatch);
   };
 };
-
-// export const deleteProduct = (id: string) => {
-//   return async (dispatch: Dispatch<AnyAction>) => {
-//     dispatch(setStockFetchingToState());
-//     await httpClient.delete(`${server.PRODUCT_URL}/${id}`);
-//     await doGetProducts(dispatch);
-//   };
-// };

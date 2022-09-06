@@ -18,9 +18,10 @@ export interface RootReducers {
 
 let middleware: Middleware[] = [thunk];
 if (import.meta.env.VITE_IS_PRODUCTION === "0") {
-  console.log(import.meta.env.VITE_IS_PRODUCTION);
-  middleware.push(logger);
+  // console.log(import.meta.env.VITE_IS_PRODUCTION);
+  // middleware.push(logger);
 }
+
 export const store = createStore(
   combineReducers({
     registerReducer,

@@ -6,12 +6,19 @@ import { useAppDispatch } from "../../../../Redux/reducers";
 import { RootReducers } from "../../../../Redux/reducers";
 import { User } from "../../../../types/user.type";
 import * as loginAction from "../../../../Redux/actions/login.action";
+
+import {
+  setLoginAsync,
+  sliceSelect,
+} from "../../../../Redux/store/slices/login.slice";
+
 type Props = {};
 
 export default function FormLoginComponent({}: Props) {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const loginReducer = useSelector((state: RootReducers) => state.loginReducer);
+  // const loginReducer = useSelector(sliceSelect);
 
   const showFrom = ({
     handleSubmit,
@@ -76,6 +83,7 @@ export default function FormLoginComponent({}: Props) {
     <Formik
       onSubmit={(values, { setSubmitting }) => {
         dispatch(loginAction.login(values, navigate));
+        // dispatch(setLoginAsync(values));
       }}
       initialValues={initialValues}
     >

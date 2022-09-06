@@ -9,6 +9,8 @@ import thunk from "redux-thunk";
 
 import { Provider, useDispatch } from "react-redux";
 import { store } from "./Redux/reducers";
+
+// import { store } from "./Redux/store";
 // import reducers from "./Redux/reducers";
 // import logger from "redux-logger";
 // let middleware: Middleware[] = [thunk];
